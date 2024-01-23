@@ -3,9 +3,10 @@
     <p>Logo</p>
   </div>
   <div class="navigation">
-    <a routerLink="/login">Login</a>
-    <a routerLink="/singup">Singup</a>
-
-    <a routerLink="/myaccount">Logout</a>
+    <a routerLink="/login" *ngIf="isLogged">Login</a>
+    <a routerLink="/singup" *ngIf="isLogged">Singup</a>
+    <a routerLink="/ads" *ngIf="!isLogged">Create Ads</a>
+    <a routerLink="/myacc" *ngIf="!isLogged">My Profile</a>
+    <a routerLink="/myaccount" (click)="logout()" *ngIf="!isLogged">Logout</a>
   </div>
 </header>

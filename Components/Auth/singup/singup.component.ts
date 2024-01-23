@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { AuthService } from "../../../services/auth.service";
 
 @Component({
   selector: "app-singup",
@@ -10,14 +11,14 @@ export class SingupComponent implements OnInit {
   form!: FormGroup;
   showPassword: boolean = false;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   onSubmit(): void {
     if (this.form.valid) {
       const email = this.form.value.email;
       const password = this.form.value.password;
       const name = this.form.value.name;
-
+      this.authService.singup(name, email, password);
       this.form.reset();
     }
   }
